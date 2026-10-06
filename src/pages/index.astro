@@ -1,0 +1,344 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen', 'Russellville', 'St. Florian', 'Underwood-Petersville', 'Zip City', 'Waterloo', 'Rogersville', 'Athens'];
+---
+
+<Layout
+  title="R&R Electric — Licensed Electrician in the Shoals, Alabama"
+  description="R&R Electric is a licensed electrician serving Florence, Muscle Shoals, Sheffield, Tuscumbia, and the whole Shoals. Panel upgrades, rewiring, EV chargers, lighting, repairs, and code corrections. Upfront pricing, same-day service."
+>
+  <!-- ================= Header ================= -->
+  <header class="site-header">
+    <div class="wrap inner">
+      <a class="logo" href="/" aria-label="R&R Electric home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" fill="#f6a51d"/>
+          </svg>
+        </span>
+        R<span class="amp">&amp;</span>R Electric
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#areas">Service Area</a>
+        <a href="#why">Why Us</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <!-- TODO before launch: replace placeholder phone -->
+      <a class="btn btn-primary btn-sm" href="tel:+12565550142">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        (256) 555-0142
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= Hero ================= -->
+  <section class="hero" id="main">
+    <div class="wrap">
+      <p class="kicker">Licensed electrician · The Shoals, Alabama</p>
+      <h1>Wired right.<br />Fixed <span style="color:var(--amber)">fast.</span></h1>
+      <p class="lede">
+        From panel upgrades to 2&nbsp;a.m. outages, R&amp;R Electric keeps homes and
+        businesses across Florence, Muscle Shoals, Sheffield, and Tuscumbia
+        running safely — with upfront pricing before we pick up a tool.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+12565550142">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Call (256) 555-0142
+        </a>
+        <a class="btn btn-outline" href="#contact">Get a free estimate</a>
+      </div>
+      <div class="proof-strip">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Licensed &amp; insured</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Upfront, flat-rate pricing</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Same-day service available</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Workmanship warranty</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Services ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What we do</p>
+        <h2>Every wire in the house. And the shop.</h2>
+        <p>If it runs on electricity in the Shoals, we install it, fix it, or upgrade it.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h4M7 13h4M14 9v6m3-6v6"/></svg></div>
+          <h3>Panel upgrades</h3>
+          <p>Old 100-amp panels and fuse boxes replaced with modern, safe service — sized for today's homes, not 1965's.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 3v8l-2 10h10L15 11V3M7 3h10M12 7v4"/></svg></div>
+          <h3>Whole-home rewiring</h3>
+          <p>Knob-and-tube and cloth wiring pulled out, replaced to code, and inspected — quietly, room by room.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" stroke-linejoin="round"/></svg></div>
+          <h3>EV charger installation</h3>
+          <p>Level 2 home charging installed on its own circuit — Tesla, Ford, Chevy, and every J1772 charger on the market.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.7 1 1.5 1 2.5h6c0-1 .2-1.8 1-2.5A6 6 0 0 0 12 3Z"/></svg></div>
+          <h3>Lighting &amp; ceiling fans</h3>
+          <p>Recessed lighting, fixtures, dimmers, fans, and exterior security lights — installed clean, patched clean.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 6a2 2 0 1 0-4 0v2H8a2 2 0 0 0-2 2v2a8 8 0 0 0 16 0v-2a2 2 0 0 0-2-2h-2V6Z" stroke-linejoin="round"/><path d="M11 9h2"/></svg></div>
+          <h3>Repairs &amp; troubleshooting</h3>
+          <p>Dead outlets, flickering lights, tripping breakers — we find the actual cause instead of guessing at parts.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1.5"/><path d="M13 9h5a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-5M8 7.5v0M8 12v0M8 16.5v0"/></svg></div>
+          <h3>Surge protection</h3>
+          <p>Whole-house surge protection at the panel — Shoals storms don't ask before they hit your appliances.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5"/></svg></div>
+          <h3>Remodels &amp; additions</h3>
+          <p>New circuits, kitchen and bath rough-ins, garage sub-panels — wired to pass inspection the first time.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="M9 12l2 2 4-4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Code corrections &amp; inspections</h3>
+          <p>Fixing DIY surprises, correcting inspection write-ups, and bringing older Shoals homes up to current code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Service area ================= -->
+  <section class="areas" id="areas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Where we work</p>
+        <h2>Based in Florence. Covering the whole Shoals.</h2>
+      </div>
+      <div class="areas-flex">
+        <div>
+          <div class="city-grid reveal">
+            {cities.map((city) => (
+              <div class="city">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+                {city}
+              </div>
+            ))}
+          </div>
+          <p class="areas-note reveal">Outside the list? Call anyway — if we can't get to you fast, we'll say so straight and point you right.</p>
+        </div>
+        <div class="why-item reveal" style="gap:1.1rem">
+          <span class="n" aria-hidden="true">⚡</span>
+          <div>
+            <h3 style="font-size:1.5rem">Local, not a call center.</h3>
+            <p style="color:var(--soft)">
+              When you call R&amp;R, you get an electrician who lives and works in the
+              Shoals — not a dispatch queue three states away. We know the area's
+              housing stock, from Sheffield mill homes to new Muscle Shoals builds,
+              and what their wiring actually needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Why us ================= -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why R&amp;R</p>
+        <h2>No surprises. Except how clean we leave it.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <span class="n">1</span>
+          <div>
+            <h3>Price before work</h3>
+            <p>You approve a flat-rate price before we start. It doesn't move because the job took longer than we figured.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">2</span>
+          <div>
+            <h3>Licensed &amp; insured</h3>
+            <p>Alabama licensed and fully insured on every job — permits pulled when required, inspections passed.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">3</span>
+          <div>
+            <h3>Same-day availability</h3>
+            <p>Most repairs scheduled same or next day across the Shoals. Real emergencies get bumped to the front.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">4</span>
+          <div>
+            <h3>Workmanship warranty</h3>
+            <p>Our work is warranted. If something we installed fails, we come back and make it right — no debate.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">5</span>
+          <div>
+            <h3>Boot covers, drop cloths</h3>
+            <p>We work in homes with kids and pets. Dust controlled, holes patched, everything cleaned before we go.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">6</span>
+          <div>
+            <h3>Plain-English answers</h3>
+            <p>You'll understand what was wrong, what we did, and what to watch for — no jargon, no upsell scripts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Process ================= -->
+  <section class="areas" id="process" style="background:var(--paper-2)">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How it goes</p>
+        <h2>Call to current, in four steps.</h2>
+      </div>
+      <div class="proc">
+        <div class="p-card reveal">
+          <span class="step">Step 1</span>
+          <h3>Call or text</h3>
+          <p>Tell us what's happening. We'll ask a few questions and get you on the schedule — often the same day.</p>
+        </div>
+        <div class="p-card reveal">
+          <span class="step">Step 2</span>
+          <h3>Diagnose &amp; price</h3>
+          <p>We find the real cause, then quote a flat price for the fix. You approve it before any work starts.</p>
+        </div>
+        <div class="p-card reveal">
+          <span class="step">Step 3</span>
+          <h3>The work</h3>
+          <p>Done right, to code, with permits when they're required. We keep the workspace clean as we go.</p>
+        </div>
+        <div class="p-card reveal">
+          <span class="step">Step 4</span>
+          <h3>Walkthrough &amp; warranty</h3>
+          <p>We test everything, show you how it works, and back the work with our workmanship warranty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Emergency strip ================= -->
+  <section class="emergency">
+    <div class="wrap reveal">
+      <h2><span class="zap">⚡</span> Burning smell? Sparks? Half the house dark?</h2>
+      <p>Don't wait and don't poke at it. Kill the breaker if you can do it safely, get everyone clear, and call us — electrical emergencies jump the line, day or night.</p>
+      <!-- TODO before launch: replace placeholder phone -->
+      <a class="btn btn-primary" href="tel:+12565550142">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Call (256) 555-0142 now
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Straight answers</p>
+        <h2>Questions we get every week</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>How much does a service call cost?</summary>
+          <p>Diagnosis is quoted upfront when you call, and it's applied toward the repair if you have us do the work. You'll never get a mystery invoice — every price is approved by you before we touch a tool.</p>
+        </details>
+        <details>
+          <summary>Do you really offer same-day service?</summary>
+          <p>For repairs and troubleshooting, yes — most days we can get a truck to you the same day anywhere in the Shoals. Larger jobs like panel upgrades or rewiring get scheduled, and we'll give you an honest window when you call.</p>
+        </details>
+        <details>
+          <summary>My panel is from the 70s. Do I really need to replace it?</summary>
+          <p>Not always — it depends on the panel brand, its condition, and what your household actually draws today. We'll look at it and tell you straight: fine, watch it, or replace it. No scare tactics.</p>
+        </details>
+        <details>
+          <summary>Can you install a charger for my EV?</summary>
+          <p>Yes. We install Level 2 chargers on dedicated circuits for every major brand, handle any panel capacity issues, and can talk you through charger options before you buy one.</p>
+        </details>
+        <details>
+          <summary>Are you licensed and insured?</summary>
+          <p>Yes — Alabama licensed and fully insured, on every job, big or small. Permits pulled where required and inspections scheduled with the local authority.</p>
+        </details>
+        <details>
+          <summary>What areas do you serve?</summary>
+          <p>All of the Shoals: Florence, Muscle Shoals, Sheffield, Tuscumbia, Killen, Russellville, and the surrounding communities. If you're a little beyond that, call — we'll tell you honestly whether we can get to you quickly.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Contact ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-head" style="margin-bottom:0">
+            <p class="eyebrow">Get started</p>
+            <h2>One call. Wired right.</h2>
+            <p class="lede">Tell us what's going on — a quote, a repair, a whole panel — and we'll get you on the schedule. Estimates are free on most jobs.</p>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Reach R&amp;R Electric</h3>
+          <!-- TODO before launch: replace placeholder phone/email -->
+          <a class="contact-row" href="tel:+12565550142">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><span class="cl">Call or text</span><br /><span class="cv">(256) 555-0142</span></span>
+          </a>
+          <a class="contact-row" href="mailto:hello@rr-electric.com?subject=Estimate%20request">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><span class="cl">Email</span><br /><span class="cv">hello@rr-electric.com</span></span>
+          </a>
+          <div class="contact-row">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></span>
+            <span><span class="cl">Hours</span><br /><span class="cv">Mon–Sat, 7am–6pm · Emergencies anytime</span></span>
+          </div>
+          <div class="contact-row">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><span class="cl">Based in</span><br /><span class="cv">Florence, Alabama — serving the Shoals</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Footer ================= -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="logo" href="/" style="text-decoration:none">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" fill="#f6a51d"/>
+            </svg>
+          </span>
+          R&amp;R Electric
+        </a>
+        <p class="fine" style="margin-top:0.6rem">Licensed electrician serving the Shoals, Alabama.</p>
+        <!-- TODO before launch: add real license number -->
+        <p class="fine">AL Electrical License #____ (add before launch)</p>
+      </div>
+      <div class="fine footer-links">
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/sitemap-index.xml">Sitemap</a>
+        <a href="tel:+12565550142">(256) 555-0142</a>
+        <span>&copy; <span id="year">2026</span> R&amp;R Electric</span>
+      </div>
+    </div>
+  </footer>
+</Layout>

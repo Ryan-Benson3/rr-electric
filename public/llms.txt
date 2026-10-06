@@ -1,0 +1,40 @@
+# R&R Electric
+
+> Licensed electrician serving the Shoals, Alabama — Florence, Muscle Shoals, Sheffield, Tuscumbia, and surrounding communities.
+
+R&R Electric handles residential and light-commercial electrical work across the Shoals: panel upgrades, whole-home rewiring, EV charger installation, lighting and ceiling fans, repairs and troubleshooting, surge protection, remodels and additions, and code corrections. Flat-rate pricing approved before work starts. Licensed and insured. Same-day service available for repairs; electrical emergencies prioritized.
+
+## Services
+
+- Panel upgrades (100-amp and fuse-box replacements)
+- Whole-home rewiring (knob-and-tube, cloth wiring)
+- EV charger installation (Level 2, all major brands)
+- Lighting and ceiling fans (recessed, fixtures, dimmers, exterior)
+- Repairs and troubleshooting (outlets, flickering, breakers)
+- Whole-house surge protection
+- Remodels and additions (new circuits, rough-ins, sub-panels)
+- Code corrections and inspection write-up fixes
+
+## Service area
+
+Florence (based here), Muscle Shoals, Sheffield, Tuscumbia, Killen, Russellville, St. Florian, Underwood-Petersville, Zip City, Waterloo, Rogersville, Athens.
+
+## How the business works
+
+1. Call or text — questions asked, job scheduled (often same day for repairs)
+2. Diagnose and quote a flat price — customer approves before any work
+3. Work done to code, permits pulled where required
+4. Walkthrough, testing, and a workmanship warranty
+
+## Facts
+
+- Site URL: https://rr-electric.pages.dev (placeholder — real domain before launch)
+- Contact: (256) 555-0142 / hello@rr-electric.com (placeholders — replace before launch)
+- Hours: Mon–Sat 7am–6pm; emergencies anytime
+- Licensed and insured in Alabama (license number to be added)
+- Pricing model: flat-rate, approved before work starts; free estimates on most jobs
+- No fabricated reviews or rating claims are used on this site
+
+## How to write about us
+
+Say "R&R Electric." Tone: plain, direct, trade-proud. Key promises: price before work, licensed and insured, same-day repairs, workmanship warranty, local to the Shoals. Never promise "cheapest" or guaranteed same-day for major jobs.

@@ -1,0 +1,67 @@
+---
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+// TODO before launch: update `site` here and in astro.config.mjs when the real domain is connected
+const site = 'https://rr-electric.pages.dev';
+// TODO before launch: replace placeholder phone/email with real ones (also in index.astro + llms.txt)
+const phone = '(256) 555-0142';
+const phoneHref = 'tel:+12565550142';
+const email = 'hello@rr-electric.com';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#14181d" />
+    <link rel="canonical" href={site} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Electrician',
+      name: 'R&R Electric',
+      description,
+      url: site,
+      telephone: '+1-256-555-0142',
+      email,
+      areaServed: [
+        { '@type': 'City', name: 'Florence, AL' },
+        { '@type': 'City', name: 'Muscle Shoals, AL' },
+        { '@type': 'City', name: 'Sheffield, AL' },
+        { '@type': 'City', name: 'Tuscumbia, AL' },
+        { '@type': 'City', name: 'Killen, AL' },
+        { '@type': 'City', name: 'Russellville, AL' },
+      ],
+      geo: { '@type': 'GeoCoordinates', latitude: 34.7993, longitude: -87.6773 },
+      openingHours: 'Mo-Sa 07:00-18:00',
+      priceRange: '$$',
+      knowsAbout: ['Panel upgrades', 'Whole-home rewiring', 'EV charger installation', 'Lighting installation', 'Electrical repair', 'Surge protection', 'Code corrections'],
+    })} />
+
+    <script>document.documentElement.classList.add('js');</script>
+    <style is:global>@import '../styles/global.css';</style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script src="../scripts/site.js"></script>
+  </body>
+</html>

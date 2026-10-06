@@ -1,0 +1,15 @@
+{
+  "name": "rr-electric",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "R&R Electric — licensed electrician serving the Shoals, Alabama. Panel upgrades, rewiring, EV chargers, lighting, repairs.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.2.6",
+    "@astrojs/sitemap": "^3.4.0"
+  }
+}
