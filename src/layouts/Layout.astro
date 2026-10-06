@@ -4,8 +4,6 @@ const { title, description } = Astro.props;
 // TODO before launch: update `site` here and in astro.config.mjs when the real domain is connected
 const site = 'https://rr-electric.pages.dev';
 // TODO before launch: replace placeholder phone/email with real ones (also in index.astro + llms.txt)
-const phone = '(256) 555-0142';
-const phoneHref = 'tel:+12565550142';
 const email = 'hello@rr-electric.com';
 ---
 
@@ -25,35 +23,72 @@ const email = 'hello@rr-electric.com';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={site} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:site_name" content="R&R Electric" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+    <meta property="og:image:alt" content="Electrician using a drill on an indoor circuit breaker panel" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="preconnect" href="https://images.pexels.com" />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Electrician',
-      name: 'R&R Electric',
-      description,
-      url: site,
-      telephone: '+1-256-555-0142',
-      email,
-      areaServed: [
-        { '@type': 'City', name: 'Florence, AL' },
-        { '@type': 'City', name: 'Muscle Shoals, AL' },
-        { '@type': 'City', name: 'Sheffield, AL' },
-        { '@type': 'City', name: 'Tuscumbia, AL' },
-        { '@type': 'City', name: 'Killen, AL' },
-        { '@type': 'City', name: 'Russellville, AL' },
+      '@graph': [
+        {
+          '@type': 'Electrician',
+          '@id': site + '/#business',
+          name: 'R&R Electric',
+          description,
+          url: site,
+          telephone: '+1-256-555-0142',
+          email,
+          image: 'https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          logo: site + '/favicon.svg',
+          address: { '@type': 'PostalAddress', addressLocality: 'Florence', addressRegion: 'AL', addressCountry: 'US' },
+          geo: { '@type': 'GeoCoordinates', latitude: 34.7993, longitude: -87.6773 },
+          areaServed: [
+            { '@type': 'City', name: 'Florence, AL' },
+            { '@type': 'City', name: 'Muscle Shoals, AL' },
+            { '@type': 'City', name: 'Sheffield, AL' },
+            { '@type': 'City', name: 'Tuscumbia, AL' },
+            { '@type': 'City', name: 'Killen, AL' },
+            { '@type': 'City', name: 'Russellville, AL' },
+          ],
+          openingHoursSpecification: [{
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            opens: '07:00', closes: '18:00',
+          }],
+          priceRange: '$$',
+          serviceType: ['Panel upgrades', 'Whole-home rewiring', 'EV charger installation', 'Lighting installation', 'Electrical repair', 'Surge protection', 'Code corrections'],
+          knowsAbout: ['Panel upgrades', 'Whole-home rewiring', 'EV charger installation', 'Lighting installation', 'Electrical repair', 'Surge protection', 'Code corrections'],
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Electrical services',
+            itemListElement: [
+              'Panel upgrades', 'Whole-home rewiring', 'EV charger installation', 'Lighting & ceiling fans',
+              'Repairs & troubleshooting', 'Surge protection', 'Remodels & additions', 'Code corrections & inspections',
+            ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+          },
+        },
+        {
+          '@type': 'WebSite',
+          '@id': site + '/#website',
+          url: site,
+          name: 'R&R Electric',
+          publisher: { '@id': site + '/#business' },
+        },
+        {
+          '@type': 'WebPage',
+          '@id': site + '/#webpage',
+          url: site,
+          name: title,
+          description,
+          isPartOf: { '@id': site + '/#website' },
+          about: { '@id': site + '/#business' },
+        },
       ],
-      geo: { '@type': 'GeoCoordinates', latitude: 34.7993, longitude: -87.6773 },
-      openingHours: 'Mo-Sa 07:00-18:00',
-      priceRange: '$$',
-      knowsAbout: ['Panel upgrades', 'Whole-home rewiring', 'EV charger installation', 'Lighting installation', 'Electrical repair', 'Surge protection', 'Code corrections'],
     })} />
 
     <script>document.documentElement.classList.add('js');</script>
