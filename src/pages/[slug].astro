@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { cityInfo } from '../cities';
+
+export function getStaticPaths() {
+  return cityInfo.map((c) => ({
+    params: { slug: `electrician-${c.slug}-al` },
+    props: { city: c },
+  }));
+}
+
+const { city } = Astro.props;
+const pagePath = `/electrician-${city.slug}-al/`;
+const nearbyPages = city.nearby
+  .map((n) => cityInfo.find((c) => c.name === n))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const faqs = [
+  {
+    q: `Do you actually serve ${city.name}?`,
+    a: `Yes — ${city.name} is inside our regular service area. We're based in Florence and work all of the Shoals and the surrounding counties, including ${city.county}. If your address is somewhere we can't reach promptly, we'll tell you that straight when you call.`,
+  },
+  {
+    q: `How fast can an electrician get to ${city.name}?`,
+    a: `It depends on the job and the day, but repairs are usually scheduled quickly and emergency calls go to the front of the line. Call (256) 555-0142 and you'll get an honest window for ${city.name} — not a vague "we'll be there sometime."`,
+  },
+  {
+    q: city.jobs[0].toLowerCase().includes('rewir') || city.jobs[0].toLowerCase().includes('panel')
+      ? `Our ${city.name} home is older — where should we start?`
+      : `What's the most common job you get called to in ${city.name}?`,
+    a: city.jobs[0].toLowerCase().includes('rewir') || city.jobs[0].toLowerCase().includes('panel')
+      ? `Start with a look at the service — panel age, capacity, and grounding — before anything else. In ${city.name}, ${city.jobs[0].charAt(0).toLowerCase() + city.jobs[0].slice(1).replace(/\.$/, '')} is usually the highest-value first step, and everything else builds on a sound panel. We'll tell you honestly what can wait and what shouldn't.`
+      : `By far: ${city.jobs[0].charAt(0).toLowerCase() + city.jobs[0].slice(1).replace(/\.$/, '')}. It's what ${city.name} calls about most, and it's usually a straightforward visit. After that, ${city.jobs[1].charAt(0).toLowerCase() + city.jobs[1].slice(1).replace(/\.$/, '')} keeps us busy.`,
+  },
+];
+
+const title = `Electrician in ${city.name}, AL — R&R Electric | Panel Upgrades, Rewiring, Repairs`;
+const description = `Electrical work in ${city.name}, Alabama: ${city.jobs[0].replace(/\.$/, '').toLowerCase()}, ${city.jobs[1].replace(/\.$/, '').toLowerCase()}, and more from a Shoals-based electrician. Free estimates — call (256) 555-0142.`;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rr-electric.pages.dev/' },
+    { '@type': 'ListItem', position: 2, name: `Electrician in ${city.name}, AL`, item: 'https://rr-electric.pages.dev' + pagePath },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description} path={pagePath}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ================= Header ================= -->
+  <header class="site-header">
+    <div class="wrap inner">
+      <a class="logo" href="/" aria-label="R&R Electric home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" fill="#f6a51d"/>
+          </svg>
+        </span>
+        R<span class="amp">&amp;</span>R <span class="logo-word">Electric</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="/#services">Services</a>
+        <a href="/#areas">Service Area</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <!-- TODO before launch: replace placeholder phone -->
+      <a class="btn btn-primary btn-sm" href="tel:+12565550142" aria-label="Call R&amp;R Electric at (256) 555-0142">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="btn-txt">(256) 555-0142</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= Hero ================= -->
+  <section class="hero" id="main">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">Electrician · {city.name}, Alabama</p>
+          <h1>Electrician in {city.name}, AL</h1>
+          <p class="lede">
+            {city.intro[0].split(' — ')[0]} — and when the wiring needs a professional,
+            R&amp;R Electric works {city.name} and all of the Shoals. Free estimates,
+            honest answers, work done right.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+12565550142">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Call (256) 555-0142
+            </a>
+            <a class="btn btn-outline" href="#estimate">Get a free estimate</a>
+          </div>
+          <div class="proof-strip">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Free estimates on most jobs</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Prompt scheduling</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Permitted, inspected work</span>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img
+            src="/images/hero.jpg"
+            alt="Electrician using a drill on an indoor circuit breaker panel"
+            width="1600" height="1200" fetchpriority="high" decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= About electrical work in city ================= -->
+  <section id="city-about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">{city.name} · {city.county}</p>
+        <h2>Electrical work in {city.name}</h2>
+      </div>
+      <div class="city-copy reveal">
+        {city.intro.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="city-jobs reveal">
+        <h3>Common jobs in {city.name}</h3>
+        <ul>
+          {city.jobs.map((j) => (
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>{j}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Cost factors ================= -->
+  <section class="areas" id="cost">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Straight about cost</p>
+        <h2>What affects an electrical quote in {city.name}</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <span class="n">1</span>
+          <div>
+            <h3>Access and wall type</h3>
+            <p>Fishing wire through open framing costs less than finished plaster. In {city.name}'s older homes, access is often the biggest line item.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">2</span>
+          <div>
+            <h3>Panel age and capacity</h3>
+            <p>If the service needs upgrading first, that comes before anything hanging off it. We'll tell you plainly when it does — and when it doesn't.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">3</span>
+          <div>
+            <h3>Distance and circuits</h3>
+            <p>A dedicated circuit across the house costs more than one next to the panel. Longer runs, more circuits, more materials and labor.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <span class="n">4</span>
+          <div>
+            <h3>Permits and inspection</h3>
+            <p>Some jobs need them, some don't. When they do, we handle the paperwork — and you'll know it was part of the price from the start.</p>
+          </div>
+        </div>
+      </div>
+      <p class="areas-note reveal">Every quote is specific to your house and your job — that's why we look before we price. Estimates are free on most work.</p>
+    </div>
+  </section>
+
+  <!-- ================= Nearby + services ================= -->
+  <section id="nearby">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Around {city.name}</p>
+        <h2>Also working nearby</h2>
+      </div>
+      <div class="city-grid reveal">
+        {nearbyPages.map((c) => (
+          <a class="city" href={`/electrician-${c.slug}-al/`}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Electrician in {c.name}
+          </a>
+        ))}
+        <a class="city" href="/#services">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" stroke-linejoin="round"/></svg>
+          All services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="areas" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">{city.name} questions</p>
+        <h2>Asked in {city.name} all the time</h2>
+      </div>
+      <div class="faq reveal">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Estimate ================= -->
+  <section class="contact" id="estimate">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-head" style="margin-bottom:0">
+            <p class="eyebrow">Get started</p>
+            <h2>Free estimate in {city.name}</h2>
+            <p class="lede">Tell us what's going on at your {city.name} home or business — a repair, a quote, a whole panel — and we'll take it from there.</p>
+          </div>
+          <LeadForm defaultCity={city.name} compact />
+        </div>
+        <div class="contact-card reveal">
+          <h3>Reach R&amp;R Electric</h3>
+          <!-- TODO before launch: replace placeholder phone/email -->
+          <a class="contact-row" href="tel:+12565550142">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><span class="cl">Call or text</span><br /><span class="cv">(256) 555-0142</span></span>
+          </a>
+          <a class="contact-row" href="mailto:hello@rr-electric.com?subject=Estimate%20request%20—%20{city.name}">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><span class="cl">Email</span><br /><span class="cv">hello@rr-electric.com</span></span>
+          </a>
+          <div class="contact-row">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><span class="cl">Serving</span><br /><span class="cv">{city.name} and all of the Shoals</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Footer ================= -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="logo" href="/" style="text-decoration:none">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" fill="#f6a51d"/>
+            </svg>
+          </span>
+          R&amp;R Electric
+        </a>
+        <p class="fine" style="margin-top:0.6rem">Electrician serving {city.name} and the Shoals, Alabama.</p>
+      </div>
+      <div class="fine footer-links">
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/sitemap-index.xml">Sitemap</a>
+        <a href="tel:+12565550142">(256) 555-0142</a>
+        <span>&copy; <span id="year">2026</span> R&amp;R Electric</span>
+      </div>
+    </div>
+  </footer>
+</Layout>

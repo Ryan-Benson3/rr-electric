@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen', 'Russellville', 'St. Florian', 'Underwood-Petersville', 'Zip City', 'Waterloo', 'Rogersville', 'Athens'];
+import LeadForm from '../components/LeadForm.astro';
+import { cities, cityPages } from '../cities';
 ---
 
 <Layout
-  title="R&R Electric — Licensed Electrician in the Shoals, Alabama"
-  description="R&R Electric is a licensed electrician serving Florence, Muscle Shoals, Sheffield, Tuscumbia, and the whole Shoals. Panel upgrades, rewiring, EV chargers, lighting, repairs, and code corrections. Free estimates, same-day service."
+  title="Electrician in the Shoals, AL — Florence, Muscle Shoals, Sheffield, Tuscumbia | R&R Electric"
+  description="R&R Electric handles electrical work across the Shoals — Florence, Muscle Shoals, Sheffield, Tuscumbia, and nearby. Panel upgrades, rewiring, EV chargers, lighting, repairs, code corrections. Free estimates."
 >
   <!-- ================= Header ================= -->
   <header class="site-header">
@@ -17,7 +17,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
             <path d="M13.5 2 4 13.5h6L9.5 22 19 10h-6l.5-8Z" fill="#f6a51d"/>
           </svg>
         </span>
-        R<span class="amp">&amp;</span>R Electric
+        R<span class="amp">&amp;</span>R <span class="logo-word">Electric</span>
       </a>
       <nav class="main-nav" aria-label="Main">
         <a href="#services">Services</a>
@@ -38,10 +38,10 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="kicker">Licensed electrician · The Shoals, Alabama</p>
+          <p class="kicker">Electrician · The Shoals, Alabama</p>
           <h1>Wired right.<br />Fixed <span style="color:var(--amber)">fast.</span></h1>
           <p class="lede">
-            From panel upgrades to 2&nbsp;a.m. outages, R&amp;R Electric keeps homes and
+            From panel upgrades to power outages, R&amp;R Electric keeps homes and
             businesses across Florence, Muscle Shoals, Sheffield, and Tuscumbia
             running safely — and we tell you straight what the job needs before
             we pick up a tool.
@@ -54,15 +54,15 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
             <a class="btn btn-outline" href="#contact">Get a free estimate</a>
           </div>
           <div class="proof-strip">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Licensed &amp; insured</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Serving all of the Shoals</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Free estimates on most jobs</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Same-day service available</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Workmanship warranty</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Prompt, reliable scheduling</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round"/></svg>Clean work, every visit</span>
           </div>
         </div>
         <div class="hero-photo">
           <img
-            src="https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=1000"
+            src="/images/hero.jpg"
             alt="Electrician using a drill on an indoor circuit breaker panel"
             width="1000" height="750" fetchpriority="high" decoding="async"
           />
@@ -150,10 +150,17 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
         <div>
           <div class="city-grid reveal">
             {cities.map((city) => (
-              <div class="city">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
-                {city}
-              </div>
+              cityPages[city] ? (
+                <a class="city" href={cityPages[city]}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  {city}
+                </a>
+              ) : (
+                <div class="city">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  {city}
+                </div>
+              )
             ))}
           </div>
           <p class="areas-note reveal">Outside the list? Call anyway — if we can't get to you fast, we'll say so straight and point you right.</p>
@@ -185,22 +192,22 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
         <div class="why-item reveal">
           <span class="n">1</span>
           <div>
-            <h3>Licensed &amp; insured</h3>
-            <p>Alabama licensed and fully insured on every job — permits pulled when required, inspections passed.</p>
+            <h3>Permitted, inspected work</h3>
+            <p>Jobs that need a permit get one, and the inspection gets passed — paperwork handled, records kept for you.</p>
           </div>
         </div>
         <div class="why-item reveal">
           <span class="n">2</span>
           <div>
-            <h3>Same-day availability</h3>
-            <p>Most repairs scheduled same or next day across the Shoals. Real emergencies get bumped to the front.</p>
+            <h3>Prompt scheduling</h3>
+            <p>Repairs get on the calendar fast, and true emergencies go to the front of the line. You'll get an honest window when you call.</p>
           </div>
         </div>
         <div class="why-item reveal">
           <span class="n">3</span>
           <div>
-            <h3>Workmanship warranty</h3>
-            <p>Our work is warranted. If something we installed fails, we come back and make it right — no debate.</p>
+            <h3>Done right or made right</h3>
+            <p>If something in our work isn't correct, we come back and correct it. Simple as that.</p>
           </div>
         </div>
         <div class="why-item reveal">
@@ -232,7 +239,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
         <div class="p-card reveal">
           <span class="step">Step 1</span>
           <h3>Call or text</h3>
-          <p>Tell us what's happening. We'll ask a few questions and get you on the schedule — often the same day.</p>
+          <p>Tell us what's happening. We'll ask a few questions and get you on the schedule — quickly.</p>
         </div>
         <div class="p-card reveal">
           <span class="step">Step 2</span>
@@ -246,8 +253,8 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
         </div>
         <div class="p-card reveal">
           <span class="step">Step 4</span>
-          <h3>Walkthrough &amp; warranty</h3>
-          <p>We test everything, show you how it works, and back the work with our workmanship warranty.</p>
+          <h3>Walkthrough &amp; wrap-up</h3>
+          <p>We test everything, show you how it works, and leave the space cleaner than we found it.</p>
         </div>
       </div>
     </div>
@@ -257,7 +264,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
   <section class="emergency">
     <div class="wrap reveal">
       <h2><span class="zap">⚡</span> Burning smell? Sparks? Half the house dark?</h2>
-      <p>Don't wait and don't poke at it. Kill the breaker if you can do it safely, get everyone clear, and call us — electrical emergencies jump the line, day or night.</p>
+      <p>Don't wait and don't poke at it. Kill the breaker if you can do it safely, get everyone clear, and call us — if it can't wait, it goes to the front of the line.</p>
       <!-- TODO before launch: replace placeholder phone -->
       <a class="btn btn-primary" href="tel:+12565550142">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -279,8 +286,8 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
           <p>Every job's different, so we talk it through with you: tell us what's happening, we'll take a look, and you'll know the cost before any work begins. No mystery invoices, ever.</p>
         </details>
         <details>
-          <summary>Do you really offer same-day service?</summary>
-          <p>For repairs and troubleshooting, yes — most days we can get a truck to you the same day anywhere in the Shoals. Larger jobs like panel upgrades or rewiring get scheduled, and we'll give you an honest window when you call.</p>
+          <summary>How fast can you get here?</summary>
+          <p>Repairs and troubleshooting usually get scheduled fast — call and we'll give you an honest window for your part of the Shoals. Larger jobs like panel upgrades or rewiring are planned around your schedule.</p>
         </details>
         <details>
           <summary>My panel is from the 70s. Do I really need to replace it?</summary>
@@ -291,8 +298,8 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
           <p>Yes. We install Level 2 chargers on dedicated circuits for every major brand, handle any panel capacity issues, and can talk you through charger options before you buy one.</p>
         </details>
         <details>
-          <summary>Are you licensed and insured?</summary>
-          <p>Yes — Alabama licensed and fully insured, on every job, big or small. Permits pulled where required and inspections scheduled with the local authority.</p>
+          <summary>Do you pull permits?</summary>
+          <p>When a job requires one, yes — permit pulled, inspection scheduled with the local authority, and the paperwork kept for your records. You'll know up front whether your job needs one.</p>
         </details>
         <details>
           <summary>What areas do you serve?</summary>
@@ -312,6 +319,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
             <h2>One call. Wired right.</h2>
             <p class="lede">Tell us what's going on — a quote, a repair, a whole panel — and we'll get you on the schedule. Estimates are free on most jobs.</p>
           </div>
+          <LeadForm />
         </div>
         <div class="contact-card reveal">
           <h3>Reach R&amp;R Electric</h3>
@@ -326,7 +334,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
           </a>
           <div class="contact-row">
             <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></span>
-            <span><span class="cl">Hours</span><br /><span class="cv">Mon–Sat, 7am–6pm · Emergencies anytime</span></span>
+            <span><span class="cl">Hours</span><br /><span class="cv">Mon–Sat, 7am–6pm · Emergency calls prioritized</span></span>
           </div>
           <div class="contact-row">
             <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg></span>
@@ -349,9 +357,7 @@ const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen',
           </span>
           R&amp;R Electric
         </a>
-        <p class="fine" style="margin-top:0.6rem">Licensed electrician serving the Shoals, Alabama.</p>
-        <!-- TODO before launch: add real license number -->
-        <p class="fine">AL Electrical License #____ (add before launch)</p>
+        <p class="fine" style="margin-top:0.6rem">Electrician serving the Shoals, Alabama.</p>
       </div>
       <div class="fine footer-links">
         <a href="/llms.txt">llms.txt</a>

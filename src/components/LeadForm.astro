@@ -1,0 +1,102 @@
+---
+// Lead form — Web3Form-backed, honeypot protected, no page reload.
+// Key is injected at build time from .env (PUBLIC_WEB3FORMS_KEY), never committed.
+interface Props { defaultCity?: string; compact?: boolean; }
+const { defaultCity = '', compact = false } = Astro.props;
+const cities = ['Florence', 'Muscle Shoals', 'Sheffield', 'Tuscumbia', 'Killen', 'Russellville', 'Other / nearby'];
+const services = ['Panel upgrade', 'Rewiring', 'EV charger', 'Lighting / fans', 'Repair / troubleshooting', 'Surge protection', 'Remodel / addition', 'Code correction / inspection', 'Something else'];
+---
+
+<form class="lead-form" data-lead-form novalidate>
+  <div class="f-row">
+    <div class="f-field">
+      <label for="lf-name">Name</label>
+      <input id="lf-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+    </div>
+    <div class="f-field">
+      <label for="lf-phone">Phone</label>
+      <input id="lf-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(256) 555-0142 style" />
+    </div>
+  </div>
+  <div class="f-row">
+    <div class="f-field">
+      <label for="lf-city">City</label>
+      <select id="lf-city" name="city">
+        {cities.map((c) => <option value={c} selected={c === defaultCity}>{c}</option>)}
+      </select>
+    </div>
+    <div class="f-field">
+      <label for="lf-service">What do you need?</label>
+      <select id="lf-service" name="service">
+        {services.map((s) => <option value={s}>{s}</option>)}
+      </select>
+    </div>
+  </div>
+  {compact ? '' : (
+    <div class="f-field">
+      <label for="lf-msg">Tell us a little more (optional)</label>
+      <textarea id="lf-msg" name="message" rows="3" placeholder="Breaker trips when the AC kicks on, need a charger installed, half the house is out…"></textarea>
+    </div>
+  )}
+  <!-- honeypot: real people never see or fill this -->
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <button class="btn btn-primary f-submit" type="submit">Request my free estimate</button>
+  <p class="f-note">Prefer to talk? <a href="tel:+12565550142">Call or text (256) 555-0142</a>.</p>
+  <p class="f-status" data-status role="status" aria-live="polite"></p>
+</form>
+
+<style>
+  .lead-form { display: grid; gap: 1rem; margin-top: 1.4rem; }
+  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 560px) { .f-row { grid-template-columns: 1fr; } }
+  .f-field { display: grid; gap: 0.35rem; }
+  .f-field label { font-size: 0.82rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0.02em; }
+  .f-field input, .f-field select, .f-field textarea {
+    font-family: var(--font-body); font-size: 1rem; color: var(--ink);
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 0.7rem 0.85rem; width: 100%;
+  }
+  .f-field input:focus, .f-field select:focus, .f-field textarea:focus { outline: 3px solid var(--amber); outline-offset: 1px; border-color: var(--amber); }
+  .hp { position: absolute; left: -9999px; }
+  .f-submit { justify-self: start; margin-top: 0.2rem; }
+  .f-note { font-size: 0.88rem; color: var(--soft); }
+  .f-note a { color: var(--amber-deep); font-weight: 600; }
+  .f-status { font-weight: 600; font-size: 0.95rem; min-height: 1.2em; }
+  .f-status.ok { color: #157a3c; }
+  .f-status.err { color: #b3261e; }
+</style>
+
+<script>
+  const KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+  document.querySelectorAll('[data-lead-form]').forEach((form) => {
+    const status = form.querySelector('[data-status]');
+    const submit = form.querySelector('.f-submit');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if ((form.querySelector('input[name="botcheck"]') as HTMLInputElement).checked) return; // bot
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      data.append('access_key', KEY);
+      data.append('subject', 'New lead — rr-electric.pages.dev');
+      submit.disabled = true;
+      status.className = 'f-status';
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          status.classList.add('ok');
+          status.textContent = 'Got it — we\'ll be in touch. If it\'s urgent, call (256) 555-0142.';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'rejected');
+        }
+      } catch {
+        status.classList.add('err');
+        status.textContent = 'That didn\'t go through — call or text (256) 555-0142 instead.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  });
+</script>

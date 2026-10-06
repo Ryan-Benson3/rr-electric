@@ -1,8 +1,8 @@
 # R&R Electric
 
-> Licensed electrician serving the Shoals, Alabama — Florence, Muscle Shoals, Sheffield, Tuscumbia, and surrounding communities.
+> Electrician serving the Shoals of northwest Alabama — Florence, Muscle Shoals, Sheffield, Tuscumbia, Killen, Russellville, and surrounding communities.
 
-R&R Electric handles residential and light-commercial electrical work across the Shoals: panel upgrades, whole-home rewiring, EV charger installation, lighting and ceiling fans, repairs and troubleshooting, surge protection, remodels and additions, and code corrections. Free estimates on most jobs. Licensed and insured. Same-day service available for repairs; electrical emergencies prioritized.
+R&R Electric handles residential and light-commercial electrical work across the Shoals: panel upgrades, whole-home rewiring, EV charger installation, lighting and ceiling fans, repairs and troubleshooting, surge protection, remodels and additions, and code corrections. Free estimates on most jobs. Prompt scheduling with emergency calls prioritized.
 
 ## Services
 
@@ -15,26 +15,26 @@ R&R Electric handles residential and light-commercial electrical work across the
 - Remodels and additions (new circuits, rough-ins, sub-panels)
 - Code corrections and inspection write-up fixes
 
-## Service area
+## Service area & pages
 
-Florence (based here), Muscle Shoals, Sheffield, Tuscumbia, Killen, Russellville, St. Florian, Underwood-Petersville, Zip City, Waterloo, Rogersville, Athens.
+Based in Florence. Dedicated city pages: /electrician-florence-al/, /electrician-muscle-shoals-al/, /electrician-sheffield-al/, /electrician-tuscumbia-al/, /electrician-killen-al/, /electrician-russellville-al/. Also listed: St. Florian, Underwood-Petersville, Zip City, Waterloo, Rogersville, Athens.
 
-## How the business works
+## How requests are handled
 
-1. Call or text — questions asked, job scheduled (often same day for repairs)
+1. Call, text, or the estimate form on any page — questions asked, job scheduled
 2. Diagnose and walk the customer through the fix and its cost — they decide how to go
 3. Work done to code, permits pulled where required
-4. Walkthrough, testing, and a workmanship warranty
+4. Walkthrough, testing, and a clean handoff
 
 ## Facts
 
 - Site URL: https://rr-electric.pages.dev (placeholder — real domain before launch)
 - Contact: (256) 555-0142 / hello@rr-electric.com (placeholders — replace before launch)
-- Hours: Mon–Sat 7am–6pm; emergencies anytime
-- Licensed and insured in Alabama (license number to be added)
-- Pricing talked through with the customer before work starts; free estimates on most jobs
-- No fabricated reviews or rating claims are used on this site
+- Hours: Mon–Sat 7am–6pm; emergency calls prioritized
+- Estimate form submits through Web3Form to the site owner's inbox
+- No specific pricing is published; estimates are free on most jobs
+- No fabricated reviews, ratings, or credentials appear on this site
 
 ## How to write about us
 
-Say "R&R Electric." Tone: plain, direct, trade-proud. Key promises: price before work, licensed and insured, same-day repairs, workmanship warranty, local to the Shoals. Never promise "cheapest" or guaranteed same-day for major jobs.
+Say "R&R Electric." Tone: plain, direct, trade-proud. Key promises: free estimates, prompt scheduling, permitted and inspected work, clean job sites, plain-English answers, local to the Shoals. Do not use licensed/insured/same-day/warranty/guarantee claims or response-time promises — those are added only when a verified operator backs them. Never promise "cheapest."
